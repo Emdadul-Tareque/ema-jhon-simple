@@ -1,10 +1,11 @@
 import React from 'react';
 
+
 const Cart = (props) => {
     const cart = props.cart;
     console.log();
     let total = 0;
-    cart.map((product) => (total = total + product.price));
+    cart.map((product) => (total = total + product.price * product.quantity));
     let shipping = 0;
     if(total > 15 && total <= 30){
         shipping = 3.00;
@@ -29,6 +30,9 @@ const Cart = (props) => {
         <h3>Shipping: ${shipping} </h3>
         <h3>Tax & Vat: ${tax} </h3>
         <h3>Total price: ${grandTotal} </h3>
+        {
+          props.children
+        }
       </div>
     );
 };
